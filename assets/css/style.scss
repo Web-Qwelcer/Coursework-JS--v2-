@@ -1,0 +1,1054 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.menu_button_span_1 {
+    top: 32px !important;
+    transform: rotate(135deg) !important;
+}
+
+.menu_button_span_2 {
+    opacity: 0 !important;
+}
+
+.menu_button_span_3 {
+    top: 32px !important;
+    transform: rotate(-135deg) !important;
+}
+
+.active {
+    display: block !important;
+}
+
+.btn_more_hover {
+    color: #3d3d3d !important;
+    border-color: #fff !important;
+    background-color: #ffffffcc !important;
+
+    &::before {
+        border-right: 2px solid #3d3d3d !important;
+        border-bottom: 1px solid #3d3d3d !important;
+    }
+}
+
+.button_prev_next_hover {
+    border-right: 2px solid #fff !important;
+    border-bottom: 2px solid #fff !important;
+}
+
+.link_hover {
+    transform: scale(1.06) !important;
+    border: 1px solid #fff !important;
+}
+
+.btn_pearlabyss_hover {
+    color: #aaa !important;
+    border-color: #aaa !important;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    background-color: #000000e6;
+    z-index: 1;
+
+    > .logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        padding: 0 35px;
+        display: flex;
+        align-items: center;
+    }
+
+    > .menu_button {
+        position: absolute;
+        top: 0;
+        left: 214px;
+        width: 60px;
+        height: 100%;
+        border-left: 1px solid #ffffff4d;
+        border-right: 1px solid #ffffff4d;
+        cursor: pointer;
+        z-index: 1;
+
+        span {
+            display: block;
+            position: absolute;
+            left: 14px;
+            width: 30px;
+            height: 2px;
+            background-color: #f0f0f2;
+            opacity: 1;
+            transition: transform 0.15s;
+        }
+
+        > span:nth-child(1) {
+            top: 23px;
+        }
+
+        > span:nth-child(2) {
+            top: 32px;
+        }
+
+        > span:nth-child(3) {
+            top: 41px;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        > .logo {
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
+
+        > .menu_button {
+            left: 0;
+            border-left: none;
+            border-right: none;
+        }
+    }
+
+    > .nav {
+        display: none;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background-color: #000000e6;
+        border-top: 1px solid #ffffff4d;
+
+        > ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+
+            > li:nth-child(1n+2) {
+                border-left: 1px solid #ffffff4d;
+            }
+
+            li {
+                > a {
+                    display: block;
+                    font-size: 17px;
+                    color: #ffffffe6;
+                    padding: 20px 30px;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 1024px) {
+        > .nav {
+            top: 0;
+            left: 0;
+            width: 320px;
+            height: 100vh;
+            background-color: #000000e6;
+            border-top: none;
+            border-right: 1px solid #ffffff4d;
+    
+            > ul {
+                flex-direction: column;
+                height: 100%;
+    
+                > li:nth-child(1n+2) {
+                    border-top: 1px solid #ffffff4d;
+                    border-left: none;
+                }
+    
+                li {
+                    > a {
+                        width: 100%;
+                        padding: 20px 0 20px 30px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.video_preview {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000e6;
+    z-index: 10;
+
+    > .preview_wrap {
+        max-width: calc(100% - 550px);
+        max-height: calc(100% - 300px);
+        position: relative;
+        top: 50%;
+        left: 50%;
+        height: 100%;
+        transform: translate(-50%, -50%);
+
+        > .preview_header {
+            position: absolute;
+            top: -80px;
+            left: 0;
+            width: 100%;
+            text-align: right;
+
+            // > .download {
+            //     position: relative;
+            //     display: inline-block;
+            //     width: 65px;
+            //     height: 65px;
+            //     border: 1px solid #3a3a3a;
+            //     cursor: pointer;
+
+            //     &::before {
+            //         content: "";
+            //         display: block;
+            //         width: 29px;
+            //         height: 27px;
+            //         position: absolute;
+            //         top: 50%;
+            //         left: 50%;
+            //         transform: translate(-50%, -50%);
+            //         background: url(https://s1.pearlcdn.com/RU/contents/img/common/spr_etc.png?v=2) -383px 0 no-repeat;
+            //         background-size: 800px 800px;
+            //     }
+            // }
+
+            > .close {
+                position: relative;
+                display: inline-block;
+                width: 65px;
+                height: 65px;
+                border: 1px solid #3a3a3a;
+                cursor: pointer;
+
+                &::before {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                span {
+                    display: block;
+                    position: absolute;
+                    top: 30px;
+                    left: 14px;
+                    width: 35px;
+                    height: 2px;
+                    background-color: #ffffff80;
+                }
+
+                > span:nth-child(1) {
+                    transform: rotate(45deg);
+                }
+                > span:nth-child(2) {
+                    transform: rotate(135deg);
+                }
+            }
+        }
+
+        > .main {
+            height: 100%;
+        }
+    }
+}
+
+.main {
+    > section:nth-child(1) {
+        position: relative;
+
+        .video_wrap {
+            > video {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+        }
+
+        .image_wrap {
+            display: none;
+            height: 40.8333rem;
+            background-image: url(https://s1.pearlcdn.com/RU/Upload/BANNER/MAIN/bannerImage_20210629120447.jpg);
+            background-position: 50% 0;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        @media (max-width: 1024px) {
+            .video_wrap {
+                display: none;
+            }
+    
+            .image_wrap {
+                display: block;
+            }
+        }
+
+        > .inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            > .title {
+                padding-bottom: 50px;
+            }
+
+            @media (max-width: 605px) {
+                > .title {
+                    text-align: center;
+    
+                    > img {
+                        width: 425px;
+                        height: auto;
+                    }
+                }
+            }
+            @media (max-width: 425px) {
+                > .title {
+                    > img {
+                        width: 375px;
+                    }
+                }
+            }
+            @media (max-width: 375px) {
+                > .title {
+                    > img {
+                        width: 320px;
+                    }
+                }
+            }
+
+            > .text {
+                text-align: center;
+
+                > p {
+                    font-size: 26px;
+                    color: #fff;
+
+                    > em {
+                        font-style: normal;
+                        color: #f1c787;
+                    }
+                }
+            }
+        }
+    }
+
+    > section:nth-child(2) {
+        position: relative;
+        height: 800px;
+        background: url(https://s1.pearlcdn.com/RU/contents/img/portal/main/main_world_class.jpg) 50% 0 no-repeat;
+        background-size: cover;
+        padding-top: 100px;
+
+        > h3 {
+            color: #fff;
+            font-size: 52px;
+            text-align: center;
+            font-weight: normal;
+            padding-bottom: 20px;
+        }
+
+        > span {
+            display: block;
+            font-size: 15px;
+            color: #998d86;
+            text-align: center;
+            line-height: 1.733;
+            letter-spacing: 0.04em;
+        }
+
+        @media (max-width: 1024px) {
+            > span {
+                font-size: 0.833rem;
+                line-height: 1.5;
+            }
+        }
+
+        > .btn_more {
+            position: absolute;
+            left: 50%;
+            bottom: 70px;
+            transform: translate(-50%, 0);
+            font-size: 16px;
+            color: #fff;
+            text-decoration: none;
+            border: 1px solid #ffffff33;
+            padding: 20px 55px;
+            transition: .3s;
+        }
+    }
+
+    > section:nth-child(3) {
+        position: relative;
+
+        > .list_classes {
+            .list_item {
+                display: none;
+                position: relative;
+                height: 830px;
+                background-position: 50% 0;
+                background-repeat: no-repeat;
+                background-size: cover;
+
+                > .class_info {
+                    position: absolute;
+                    top: 185px;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                    text-align: center;
+
+                    > h3 {
+                        font-size: 75px;
+                        color: #ffffffe6;
+                        padding-bottom: 20px;
+                    }
+
+                    @media (max-width: 1024px) {
+                        > h3 {
+                            font-size: 2.708rem;
+                        }
+                    }
+
+                    > span {
+                        display: block;
+                        color: #b5b5b5cc;
+                        font-size: 15px;
+                        text-align: center;
+                        line-height: 1.733;
+                        padding-bottom: 30px;
+                    }
+
+                    @media (max-width: 1024px) {
+                        > span {
+                            font-size: 0.833rem;
+                            line-height: 1.5;
+                            padding-bottom: 1.083rem;
+                        }
+                    }
+
+                    > a {
+                        position: relative;
+                        display: inline-block;
+                        width: 132px;
+                        height: 42px;
+                        font-size: 0;
+                        border: 1px solid #ffffff66;
+                        transition: 0.35s;
+
+                        &::before {
+                            content: "";
+                            display: block;
+                            position: absolute;
+                            left: 47%;
+                            bottom: 17px;
+                            transform: translate(-50%, 0) skewX(55deg);
+                            width: 69px;
+                            height: 10px;
+                            border-right: 2px solid #fff;
+                            border-bottom: 1px solid #fff;
+                            transition: 0.35s;
+                        }
+                    }
+
+                    @media (max-width: 1024px) {
+                        > a {
+                            width: 6.041rem;
+                            height: 1.875rem;
+
+                            &::before {
+                                top: 50%;
+                                bottom: auto;
+                                width: 2.833rem;
+                                height: 0.458rem;
+                                transform: translate(-50%, -50%) skewX(55deg);
+                            }
+                        }
+                    }
+                }
+            }
+
+            > .item_1 {
+                background-image: url(https://s1.pearlcdn.com/RU/contents/img/portal/main/main_character_class_0.jpg);
+            }
+            > .item_2 {
+                background-image: url(https://s1.pearlcdn.com/RU/contents/img/portal/main/main_character_class_4.jpg);
+            }
+            > .item_3 {
+                background-image: url(https://s1.pearlcdn.com/RU/contents/img/portal/main/main_character_class_8.jpg);
+            }
+            > .item_4 {
+                background-image: url(https://s1.pearlcdn.com/RU/contents/img/portal/main/main_character_class_12.jpg);
+            }
+            > .item_5 {
+                background-image: url(https://s1.pearlcdn.com/RU/contents/img/portal/main/main_character_class_16.jpg);
+            }
+            > .item_6 {
+                background-image: url(https://s1.pearlcdn.com/RU/contents/img/portal/main/main_character_class_20.jpg);
+            }
+            > .item_7 {
+                background-image: url(https://s1.pearlcdn.com/RU/contents/img/portal/main/main_character_class_21.jpg);
+            }
+            > .item_8 {
+                background-image: url(https://s1.pearlcdn.com/RU/contents/img/portal/main/main_character_class_24.jpg);
+            }
+            > .item_9 {
+                background-image: url(https://s1.pearlcdn.com/RU/contents/img/portal/main/main_character_class_25.jpg);
+            }
+            > .item_10 {
+                background-image: url(https://s1.pearlcdn.com/RU/contents/img/portal/main/main_character_class_26.jpg);
+            }
+            > .item_11 {
+                background-image: url(https://s1.pearlcdn.com/RU/contents/img/portal/main/main_character_class_28.jpg);
+            }
+            > .item_12 {
+                background-image: url(https://s1.pearlcdn.com/RU/contents/img/portal/main/main_character_class_31.jpg);
+            }
+            > .item_13 {
+                background-image: url(https://s1.pearlcdn.com/RU/contents/img/portal/main/main_character_class_27.jpg);
+            }
+            > .item_14 {
+                background-image: url(https://s1.pearlcdn.com/RU/contents/img/portal/main/main_character_class_19.jpg);
+            }
+            > .item_15 {
+                background-image: url(https://s1.pearlcdn.com/RU/contents/img/portal/main/main_character_class_23.jpg);
+            }
+            > .item_16 {
+                background-image: url(https://s1.pearlcdn.com/RU/contents/img/portal/main/main_character_class_11.jpg);
+            }
+            > .item_17 {
+                background-image: url(https://s1.pearlcdn.com/RU/contents/img/portal/main/main_character_class_29.jpg);
+            }
+            > .item_18 {
+                background-image: url(https://s1.pearlcdn.com/RU/contents/img/portal/main/main_character_class_17.jpg);
+            }
+            > .item_19 {
+                background-image: url(https://s1.pearlcdn.com/RU/contents/img/portal/main/main_character_class_5_v1.jpg);
+            }
+            > .item_20 {
+                background-image: url(https://s1.pearlcdn.com/RU/contents/img/portal/main/main_character_class_1_v1.jpg);
+            }
+            > .item_21 {
+                background-image: url(https://s1.pearlcdn.com/RU/contents/img/portal/main/main_character_class_9.jpg);
+            }
+            > .item_22 {
+                background-image: url(https://s1.pearlcdn.com/RU/contents/img/portal/main/main_character_class_2_v3.jpg);
+            }
+            > .item_23 {
+                background-image: url(https://s1.pearlcdn.com/RU/contents/img/portal/main/main_character_class_10_v3.jpg);
+            }
+        }
+
+        > .class_nav {
+            .button_prev_next {
+                display: block;
+                position: absolute;
+                top: 50%;
+                transform: translate(-50%, 0);
+                width: 75px;
+                height: 75px;
+                border-right: 2px solid #849091;
+                border-bottom: 2px solid #849091;
+                cursor: pointer;
+            }
+
+            > .prev {
+                left: 10%;
+                transform: translate(-50%, -50%) rotate(135deg);
+            }
+
+            > .next {
+                left: 90%;
+                transform: translate(-50%, -50%) rotate(-45deg);
+            }
+        }
+
+        > .list_links_classes {
+            position: absolute;
+            left: 50%;
+            bottom: 100px;
+            transform: translate(-50%, 0);
+            width: 1020px;
+
+            > ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                list-style: none;
+
+                li {
+                    display: block;
+                    position: relative;
+                    width: 82px;
+                    height: 82px;
+                    transform: scale(0.9);
+                    transition: 0.15s;
+                    cursor: pointer;
+
+                    &::before {
+                        content: "";
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        background: url(https://s1.pearlcdn.com/RU/contents/img/portal/main/icn_main_characters_spr.png?v=4) no-repeat;
+                        background-size: 726px 542px;
+                    }
+                }
+
+                > .link_01 {
+                    &::before {
+                        background-position: 0 -276px;
+                    }
+                }
+                > .link_02 {
+                    &::before {
+                        background-position: -92px -276px;
+                    }
+                }
+                > .link_03 {
+                    &::before {
+                        background-position: 0 -368px;
+                    }
+                }
+                > .link_04 {
+                    &::before {
+                        background-position: -182px -276px;
+                    }
+                }
+                > .link_05 {
+                    &::before {
+                        background-position: -461px -276px;
+                    }
+                }
+                > .link_06 {
+                    &::before {
+                        background-position: -92px -368px;
+                    }
+                }
+                > .link_07 {
+                    &::before {
+                        background-position: 0 -460px;
+                    }
+                }
+                > .link_08 {
+                    &::before {
+                        background-position: -368px -276px;
+                    }
+                }
+                > .link_09 {
+                    &::before {
+                        background-position: -277px -368px;
+                    }
+                }
+                > .link_10 {
+                    &::before {
+                        background-position: -368px -368px;
+                    }
+                }
+                > .link_11 {
+                    &::before {
+                        background-position: -182px -368px;
+                    }
+                }
+                > .link_12 {
+                    &::before {
+                        background-position: -277px -276px;
+                    }
+                }
+                > .link_13 {
+                    &::before {
+                        background-position: -552px -276px;
+                    }
+                }
+                > .link_14 {
+                    &::before {
+                        background-position: -645px -276px;
+                    }
+                }
+                > .link_15 {
+                    &::before {
+                        background-position: -461px -368px;
+                    }
+                }
+                > .link_16 {
+                    &::before {
+                        background-position: -552px -368px;
+                    }
+                }
+                > .link_17 {
+                    &::before {
+                        background-position: -645px -368px;
+                    }
+                }
+                > .link_18 {
+                    &::before {
+                        background-position: -92px -460px;
+                    }
+                }
+                > .link_19 {
+                    &::before {
+                        background-position: -182px -460px;
+                    }
+                }
+                > .link_20 {
+                    &::before {
+                        background-position: -277px -460px;
+                    }
+                }
+                > .link_21 {
+                    &::before {
+                        background-position: -368px -460px;
+                    }
+                }
+                > .link_22 {
+                    &::before {
+                        background-position: -460px -460px;
+                    }
+                }
+                > .link_23 {
+                    &::before {
+                        background-position: -552px -460px;
+                    }
+                }
+            }
+        }
+    }
+
+    > section:nth-child(4) {
+        position: relative;
+        background-color: #eceff1;
+        padding: 95px 0 80px 0;
+
+        > h3 {
+            font-size: 60px;
+            color: #181818;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        > span {
+            display: block;
+            font-size: 15px;
+            color: #171b1d;
+            text-align: center;
+            padding-bottom: 40px;
+            line-height: 1.733;
+        }
+
+        > .media_list {
+            position: relative;
+            max-width: 1300px;
+            height: 365px;
+            margin: 0 auto;
+            border: 1px solid #0f00001a;
+
+            .media {
+                cursor: pointer;
+            }
+
+            > .movie {
+                position: absolute;
+                left: 25%;
+                width: 50%;
+                height: 100%;
+            }
+
+            .image {
+                position: absolute;
+                width: 25%;
+                height: 50%;
+            }
+
+            > .image:nth-last-of-type(4) {
+                top: 0;
+                left: 75%;
+            }
+            > .image:nth-last-of-type(3) {
+                top: 50%;
+                left: 75%;
+            }
+            > .image:nth-last-of-type(2) {
+                top: 0;
+                left: 0;
+            }
+            > .image:nth-last-of-type(1) {
+                top: 50%;
+                left: 0;
+            }
+        }
+    }
+}
+
+.footer {
+    background-color: #1e2129;
+    padding-bottom: 80px;
+
+    > .social_networks {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #30343e;
+        height: 135px;
+
+        a {
+            position: relative;
+            display: inline-block;
+            width: 75px;
+            height: 75px;
+            margin: 0 20px;
+            border: 1px solid #ffffff33;
+            border-radius: 50%;
+
+            &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: url(https://s1.pearlcdn.com/RU/contents/img/common/spr_etc.png?v=2) no-repeat;
+                background-size: 800px 800px;
+            }
+        }
+
+        > .vk {
+            &::before {
+                width: 32px;
+                height: 20px;
+                background-position: -139px -767px;
+            }
+        }
+        > .youtube {
+            &::before {
+                width: 36px;
+                height: 26px;
+                background-position: -35px -767px;
+            }
+        }
+        > .twitch {
+            &::before {
+                width: 30px;
+                height: 32px;
+                background-position: -90px -767px;
+            }
+        }
+        > .facebook {
+            &::before {
+                width: 16px;
+                height: 32px;
+                background-position: 0 -767px;
+            }
+        }
+        > .discord {
+            &::before {
+                width: 36px;
+                height: 26px;
+                background-position: -755px -767px;
+            }
+        }
+        > .app {
+            &::before {
+                width: 28px;
+                height: 40px;
+                background: url(https://s1.pearlcdn.com/RU/contents/img/common/spr_sns.png?v=v2) no-repeat;
+                background-position: -120px -298px;
+            }
+        }
+    }
+
+    .inner {
+        padding-top: 60px;
+
+        > .term_list {
+            text-align: center;
+            padding-bottom: 40px;
+
+            > a {
+                display: inline-block;
+                padding: 0 24px;
+                font-size: 14px;
+                color: #d5d4d4;
+                text-decoration: none;
+            }
+
+            > a:nth-child(1n+2) {
+                border-left: 1px solid #fff;
+            }
+        }
+
+        > .rating {
+            padding-bottom: 40px;
+
+            > img {
+                display: block;
+                margin: 0 auto;
+            }
+        }
+
+        > .copyright {
+            position: relative;
+            
+            > .sitemap_country {
+                display: none;
+                position: absolute;
+                left: 0;
+                bottom: calc(100% - 1px);
+                width: 100%;
+                background-color: #252831;
+                border-top: 1px solid #35383f;
+                border-bottom: 1px solid #35383f;
+
+                > ._wrap {
+                    display: flex;
+                    justify-content: center;
+                    width: 665px;
+                    margin: 0 auto;
+
+                    > .site_mobile, .site_pc {
+                        padding: 20px 0;
+
+                        > span {
+                            display: block;
+                            font-size: 16px;
+                            color: #ecaf4b;
+                            font-weight: bold;
+                            padding-bottom: 8px;
+                        }
+
+                        > ul {
+                            list-style: none;
+
+                            li {
+                                > a {
+                                    display: block;
+                                    font-size: 14px;
+                                    color: #7c7c7e;
+                                    text-decoration: none;
+                                    padding: 8px 0;
+                                    transition: color .3s;
+
+                                    &:hover {
+                                        color: #7999f0;
+                                        text-decoration: underline;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    > .site_mobile {
+                        border-right: 1px solid #35383f;
+
+                        > span {
+                            width: 152.06px;
+                        }
+                    }
+
+                    > .site_pc {
+                        
+                        padding-left: 30px;
+                        > ul {
+                            width: 100%;
+                            display: flex;
+                            flex-wrap: wrap;
+
+                            li {
+                                display: block;
+                                width: 33.33%;
+                            }
+                        }
+                    }
+                }
+            }
+
+            > .footer_item {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                > a {
+                    display: block;
+                    width: 144px;
+                    height: 26px;
+
+                    &::before {
+                        content: "";
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        background: url(https://s1.pearlcdn.com/RU/contents/img/common/spr_etc.png?v=2) -190px -767px no-repeat;
+                        background-size: 800px 800px;
+                    }
+                }
+
+                > p {
+                    display: block;
+                    padding: 0 30px 0 15px;
+                    font-size: 13px;
+                    color: #7f7e7e;
+                }
+
+                > .btn_pearlabyss {
+                    display: block;
+                    font-size: 14px;
+                    color: #7c7c7e;
+                    border: 1px solid #42454d;
+                    background-color: #252831;
+                    padding: 16px 20px;
+                    transition: .3s;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+.scroll_button {
+    display: none;
+    position: fixed;
+    right: 1.25rem;
+    bottom: 2.416rem;
+
+    > span {
+        display: block;
+        width: 4.166rem;
+        height: 4.166rem;
+        background-color: #fff;
+        border: 1px solid #7f7f7f;
+        cursor: pointer;
+
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 1.416rem;
+            height: 1.583rem;
+            background: url(https://s1.pearlcdn.com/RU/contents/img/common/spr_etc.png?v=2) no-repeat;
+            background-size: 33.33rem 33.33rem;
+            background-position: -17.9583rem -2.125rem;
+            opacity: 1;
+        }
+    }
+}
